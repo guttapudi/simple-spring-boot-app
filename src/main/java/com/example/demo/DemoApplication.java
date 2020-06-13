@@ -14,6 +14,7 @@ public class DemoApplication extends SpringBootServletInitializer{
 		return "pong";
 	}
 	public static void main(String[] args) {
+		System.out.println("######### Running the Demo Application ##############");
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
