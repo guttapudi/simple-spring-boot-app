@@ -13,6 +13,10 @@ public class DemoApplication extends SpringBootServletInitializer{
 	public String ping(){
 		return "pong";
 	}
+	@GetMapping("/ping2")
+	public String ping(){
+		return "pong2";
+	}
 	public static void main(String[] args) {
 		System.out.println("######### Running the Demo Application ##############");
 		SpringApplication.run(DemoApplication.class, args);
