@@ -23,7 +23,13 @@ mvn clean package'''
       }
     }
 
-    stage('Deploy to remote tomcat server') {
+    stage('Get Approval') {
+      steps {
+        input 'Can we deploy this ?'
+      }
+    }
+
+    stage('Deploy to remote tomcat') {
       steps {
         sh 'scp ${WORKSPACE}/target/*.war tomcat@192.168.1.123:/opt/tomcat/webapps'
         mail(subject: 'Deployment Succeeded', body: 'Deployment Succeeded', to: 'guttapudi.karthik@gmail.com')
