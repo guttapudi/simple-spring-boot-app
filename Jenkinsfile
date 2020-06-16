@@ -7,9 +7,15 @@ pipeline {
       }
     }
 
-    stage('Build') {
+    stage('Checkout from SCM') {
       steps {
         git(url: 'https://github.com/guttapudi/simple-spring-boot-app.git', branch: 'master', poll: true)
+      }
+    }
+
+    stage('Build') {
+      steps {
+        withMaven(maven: 'jenkins-maven')
       }
     }
 
