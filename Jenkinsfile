@@ -7,5 +7,11 @@ pipeline {
       }
     }
 
+    stage('Build') {
+      steps {
+        git(url: 'https://github.com/guttapudi/simple-spring-boot-app.git', branch: 'master', poll: true)
+      }
+    }
+
   }
 }
