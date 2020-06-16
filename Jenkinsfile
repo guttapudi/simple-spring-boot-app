@@ -15,7 +15,11 @@ pipeline {
 
     stage('Build') {
       steps {
-        withMaven(maven: 'jenkins-maven')
+        withMaven(maven: 'jenkins-maven') {
+          sh '''mvn --version
+mvn clean package'''
+        }
+
       }
     }
 
