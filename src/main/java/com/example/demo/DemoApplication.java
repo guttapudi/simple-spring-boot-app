@@ -14,7 +14,7 @@ public class DemoApplication extends SpringBootServletInitializer{
 		return "pong";
 	}
 	@GetMapping("/ping2")
-	public String ping(){
+	public String ping2(){
 		return "pong2";
 	}
 	public static void main(String[] args) {
