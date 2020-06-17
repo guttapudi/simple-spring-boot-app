@@ -2,19 +2,8 @@ pipeline {
   agent any
   stages {
     stage('Printing env vars') {
-      parallel {
-        stage('Printing env vars') {
-          steps {
-            sh 'printenv | sort'
-          }
-        }
-
-        stage('Another printing vars ') {
-          steps {
-            echo 'hello'
-          }
-        }
-
+      steps {
+        sh 'printenv | sort'
       }
     }
 
