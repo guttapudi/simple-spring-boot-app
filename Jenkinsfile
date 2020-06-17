@@ -36,6 +36,12 @@ mvn clean package'''
     }
 
     stage('Get Approval') {
+      post {
+        success {
+          sh 'echo Got the approval'
+        }
+
+      }
       steps {
         mail(subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}) is waiting for input", body: 'Waiting for you approval', to: 'guttapudi.karthik@gmail.com')
         input 'Can we deploy this ?'
