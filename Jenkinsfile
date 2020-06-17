@@ -25,6 +25,12 @@ pipeline {
     }
 
     stage('Build') {
+      agent {
+        node {
+          label 'mymavennode'
+        }
+
+      }
       steps {
         withMaven(maven: 'jenkins-maven') {
           sh '''mvn --version
