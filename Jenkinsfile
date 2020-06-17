@@ -36,5 +36,17 @@ mvn clean package'''
       }
     }
 
+    stage('Archive the artifacts') {
+      steps {
+        archiveArtifacts(artifacts: 'target/*.war', fingerprint: true, onlyIfSuccessful: true)
+      }
+    }
+
+    stage('Test Stage') {
+      steps {
+        junit(testResults: '**/surefire-reports/**/*.xml', allowEmptyResults: true)
+      }
+    }
+
   }
 }
