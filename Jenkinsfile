@@ -60,7 +60,10 @@ mvn clean package'''
       }
       steps {
         mail(subject: "Job '${JOB_NAME}' (${BUILD_NUMBER}), commit '${GIT_COMMIT}' on branch '${GIT_BRANCH}' is waiting for input", body: 'Waiting for you approval', to: 'guttapudi.karthik@gmail.com')
-        input 'Can we deploy this ?'
+        timeout(time: 5, unit: 'SECONDS') {
+          input 'can we deploy this on the server ?'
+        }
+
       }
     }
 
