@@ -95,7 +95,7 @@ mvn clean package'''
 
   }
   options {
-    timeout(time: 30, unit: 'SECONDS')
+    timeout(time: 90, unit: 'SECONDS')
   }
   parameters {
     string(name: 'REGION', defaultValue: 'SG', description: 'region code')
