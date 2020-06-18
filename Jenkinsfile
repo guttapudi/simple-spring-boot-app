@@ -1,6 +1,15 @@
 pipeline {
   agent any
   stages {
+    stage('Run this only on master branch') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'echo "Running this step only when on master branch"'
+      }
+    }
+
     stage('Printing env vars') {
       parallel {
         stage('Printing env vars') {
@@ -58,15 +67,6 @@ mvn clean package'''
     stage('Archive the artifacts') {
       steps {
         archiveArtifacts(artifacts: 'target/*.war', fingerprint: true, onlyIfSuccessful: true)
-      }
-    }
-
-    stage('Run this only on master branch') {
-      when {
-        branch 'master'
-      }
-      steps {
-        sh 'echo "Running this step only when on master branch"'
       }
     }
 
