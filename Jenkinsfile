@@ -61,6 +61,15 @@ mvn clean package'''
       }
     }
 
+    stage('Run this only on master branch') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'echo "Running this step only when on master branch"'
+      }
+    }
+
     stage('Test Stage') {
       steps {
         junit(testResults: '**/surefire-reports/**/*.xml', allowEmptyResults: true)
