@@ -14,6 +14,13 @@ pipeline {
       parallel {
         stage('Printing env vars') {
           steps {
+            withCredentials(bindings: [usernamePassword(credentialsId: 'sample-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+              sh 'echo $PASSWORD'
+              echo USERNAME
+              echo "username is $USERNAME"
+            }
+
+            sh 'echo $USERNAME'
             sh 'printenv | sort'
           }
         }
