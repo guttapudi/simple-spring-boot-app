@@ -14,6 +14,7 @@ pipeline {
       parallel {
         stage('Printing env vars') {
           steps {
+            echo "Region code is ${REGION}"
             withCredentials(bindings: [usernamePassword(credentialsId: 'sample-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
               sh 'echo $PASSWORD'
               echo USERNAME
@@ -89,5 +90,8 @@ mvn clean package'''
   }
   options {
     timeout(time: 30, unit: 'SECONDS')
+  }
+  parameters {
+    string(name: 'REGION', defaultValue: 'SG', description: 'region code')
   }
 }
