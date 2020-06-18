@@ -14,7 +14,7 @@ pipeline {
       parallel {
         stage('Printing env vars') {
           steps {
-            echo "Region code is ${REGION}"
+            echo "Region code is '${REGION}'"
             withCredentials(bindings: [usernamePassword(credentialsId: 'sample-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
               sh 'echo $PASSWORD'
               echo USERNAME
