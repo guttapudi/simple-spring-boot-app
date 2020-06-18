@@ -87,4 +87,7 @@ mvn clean package'''
     }
 
   }
+  options {
+    timeout(time: 12, unit: 'SECONDS')
+  }
 }
