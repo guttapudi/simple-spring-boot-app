@@ -43,6 +43,12 @@ pipeline {
 
     stage('Build') {
       agent any
+      post {
+        always {
+          junit 'target/surefire-reports/**/*.xml'
+        }
+
+      }
       steps {
         withMaven(maven: 'jenkins-maven') {
           sh '''mvn --version
